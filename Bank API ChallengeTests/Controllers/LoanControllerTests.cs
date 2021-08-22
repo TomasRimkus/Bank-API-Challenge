@@ -11,14 +11,17 @@ namespace Bank_API_Challenge.Controllers.Tests
         public void GetLoanDataTest()
         {
             // Arrange
+
             LoanController TestInstance = new LoanController();
             LoanData CorrectData = new LoanData(500000, 120, 5000, 5303.28, 136393.6, 2.83);
             // Act
+
             IActionResult result = TestInstance.GetLoanData("asd", 500000, 120, 5, 12);
             // Assert
-            var okObjectResult = result as OkObjectResult;
+
+            OkObjectResult okObjectResult = result as OkObjectResult;
             Assert.IsNotNull(okObjectResult);
-            var LoanData = okObjectResult.Value as LoanData;
+            LoanData LoanData = okObjectResult.Value as LoanData;
             Assert.IsNotNull(LoanData);
             Assert.AreEqual(CorrectData.MoneyLoaned, LoanData.MoneyLoaned);
             Assert.AreEqual(CorrectData.LoanLengthInMonths, LoanData.LoanLengthInMonths);
