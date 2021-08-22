@@ -10,12 +10,12 @@ namespace Bank_API.Helpers
             // Formula from calculatorsoup.com
             double MonthlyPayment = (LoanAmmount * InterestRatePerPayment * Math.Pow(1 + InterestRatePerPayment, LoanDurationInMonths)) / (Math.Pow(1 + InterestRatePerPayment, LoanDurationInMonths) - 1);
 
-            return MonthlyPayment;
+            return Math.Round(MonthlyPayment,2);
         }
 
         public static double CalculateTotalInterest(double LoanAmmount, double InterestRate, int LoanDurationInMonths, int PaymentsInAYear)
         {
-            return (CalculateMonthlyPayment(LoanAmmount, InterestRate, LoanDurationInMonths, PaymentsInAYear) * LoanDurationInMonths) - LoanAmmount;
+            return Math.Round((CalculateMonthlyPayment(LoanAmmount, InterestRate, LoanDurationInMonths, PaymentsInAYear) * LoanDurationInMonths) - LoanAmmount ,2);
         }
 
         public static double CalculateAdminFees(double LoanAmmount)
@@ -30,7 +30,7 @@ namespace Bank_API.Helpers
         {
             double LoanWithFees = CalculateTotalInterest(LoanAmmount, InterestRate, LoanDurationInMonths, PaymentsInAYear) + CalculateAdminFees(LoanAmmount);
             // percentage APR formula from www.easyunitconverter.com
-            return ((LoanWithFees / LoanAmmount) / (365 * (LoanDurationInMonths / 12))) * 365 * 100;
+            return Math.Round(((LoanWithFees / LoanAmmount) / (365 * (LoanDurationInMonths / 12))) * 365 * 100,2);
 
         }
 

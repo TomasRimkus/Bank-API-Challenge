@@ -25,10 +25,10 @@ namespace Bank_API_Challenge.Controllers
             }
             else
             {
-                double AdminFees = Math.Round(LoanCalculator.CalculateAdminFees(LoanAmmount), 2);
-                double MonthlyPayment = Math.Round(LoanCalculator.CalculateMonthlyPayment(LoanAmmount, InterestRate, LoanDurationInMonths, PaymentsInAYear), 2);
-                double TotalInterest = Math.Round(LoanCalculator.CalculateTotalInterest(LoanAmmount, InterestRate, LoanDurationInMonths, PaymentsInAYear), 2);
-                double APR = Math.Round(LoanCalculator.CalculateAPR(LoanAmmount, InterestRate, LoanDurationInMonths, PaymentsInAYear), 2);
+                double AdminFees =LoanCalculator.CalculateAdminFees(LoanAmmount);
+                double MonthlyPayment = LoanCalculator.CalculateMonthlyPayment(LoanAmmount, InterestRate, LoanDurationInMonths, PaymentsInAYear);
+                double TotalInterest = LoanCalculator.CalculateTotalInterest(LoanAmmount, InterestRate, LoanDurationInMonths, PaymentsInAYear);
+                double APR = LoanCalculator.CalculateAPR(LoanAmmount, InterestRate, LoanDurationInMonths, PaymentsInAYear);
 
                 LoanData CurrentLoan = new LoanData(LoanAmmount, LoanDurationInMonths, AdminFees, MonthlyPayment, TotalInterest, APR);
 
